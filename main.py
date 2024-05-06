@@ -12,7 +12,15 @@ count = 0
 
 #disable all buttons
 def disable_all_buttond():
-    pass
+    b1.config(state=DISABLED)
+    b2.config(state=DISABLED)
+    b3.config(state=DISABLED)
+    b4.config(state=DISABLED)
+    b5.config(state=DISABLED)
+    b6.config(state=DISABLED)
+    b7.config(state=DISABLED)
+    b8.config(state=DISABLED)
+    b9.config(state=DISABLED)
 
 #check to see if someone won
 def checkifwon():
@@ -155,10 +163,12 @@ def b_click(b):
         b["text"] = "X"
         clicked = False
         count += 1
+        checkifwon()
     elif b["text"] == " " and clicked == False:
         b["text"] = "O"
         clicked = True
         count += 1
+        checkifwon()
     else:
         messagebox.showerror("Tic Tac Toe", "This box has already been selected\n Pick another box")
 #built our buttons
@@ -187,5 +197,15 @@ b6.grid(row=1, column=2)
 b7.grid(row=2, column=0)
 b8.grid(row=2, column=1)
 b9.grid(row=2, column=2)
+
+#Create menue
+my_menu = Menu(root)
+root.config(menu=my_menu)
+
+#Create Options Menu
+options_menu = Menu(my_menu, tearoff=False)
+my_menu.add_cascade(Label="Options", menu=options_menu)
+options_menu.add_command(label="Rest Game", command=reset)
+
 
 root.mainloop()
