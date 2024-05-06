@@ -6,9 +6,24 @@ root.title('Python_game.com - Tic-Tac-Toe')
 root.iconbitmap('C:\\Users\\Admin\\gui\\favicon_io')
 #root.geometry("1200x710")
 
+#x starts so true
+clicked = True
+count = 0
+
 #button clicked function
 def b_click(b):
-    pass
+    global clicked, count
+
+    if b["text"] == " " and clicked == True:
+        b["text"] = "X"
+        clicked = False
+        count += 1
+    elif b["text"] == " " and clicked == False:
+        b["text"] = "O"
+        clicked = True
+        count += 1
+    else:
+        messagebox.showerror("Tic Tac Toe", "This box has already been selected\n Pick another box")
 #built our buttons
 
 b1 = Button(root, text=" ", font=("Helvetica", 20), height=3, width=6, bg="SystemButtonFace", command=lambda: b_click(b1))
