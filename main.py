@@ -10,6 +10,23 @@ root.iconbitmap('C:\\Users\\Admin\\gui\\favicon_io')
 clicked = True
 count = 0
 
+#disable all buttons
+def disable_all_buttond():
+    pass
+
+#check to see if someone won
+def checkifwon():
+    global winner
+    winner = False
+
+    if b1["text"] == "X" and b2["text"] == "X" and b3["text"] == "X":
+        b1.config(bg="purple")
+        b2.config(bg="purple")
+        b3.config(bg="purple")
+        winner = True
+        messagebox.showinfo("Tic Tac Toe", "X wins!!!")
+        disable_all_buttond()
+
 #button clicked function
 def b_click(b):
     global clicked, count
